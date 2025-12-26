@@ -42,5 +42,5 @@ RUN python manage.py collectstatic --noinput
 
 EXPOSE 8080
 
-# Start command for Railway
-CMD python manage.py migrate && gunicorn dict.wsgi --bind 0.0.0.0:$PORT
+# FIXED: Start command for Railway with migration fix
+CMD python manage.py migrate --run-syncdb && python manage.py migrate && gunicorn dict.wsgi --bind 0.0.0.0:$PORT
