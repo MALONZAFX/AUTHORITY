@@ -453,6 +453,7 @@
         </style>
 
 <!-- Team Section Start -->
+<!-- Team Section Start -->
 <div class="team">
     <div class="container">
         <div class="section-header text-center">
@@ -460,145 +461,35 @@
             <h2>Meet Board Members</h2>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            {% for member in members %}
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
                 <div class="team-item">
                     <div class="team-img">
-                        <img src="{% static 'img/Dr.-Chris-K.-Kiptoo-CBS.jpg' %}" alt="Dr. Chris K. Kiptoo">
-                    </div>
+    <img src="{{ member.image.url }}" alt="{{ member.name }}" class="img-fluid" style="width: 100%; height: 300px; object-fit: cover; border-radius: 10px;">
+</div>
                     <div class="team-text">
-                        <h2 style="color: #ffffff;">DR. CHRIS K. KIPTOO</h2>
-                        <p>The Principal Secretary, National Treasury</p>
-                        <button class="view-profile-btn" onclick="openPopup(0)">View Profile</button>
+                        <h2 style="font-size: medium;">{{ member.name }}</h2>
+                        <p>{{ member.role }}</p>
+                        <button class="view-profile-btn" onclick="openMemberPopup({{ forloop.counter0 }})">View Profile</button>
                     </div>
                 </div>
             </div>
-           
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{% static 'img/ag.png' %}" alt="Hon. Dorcas Oduor">
-                    </div>
-                    <div class="team-text">
-                        <h2 style="color: #ffffff;">HON. DORCAS ODUOR</h2>
-                        <p>Attorney General</p>
-                        <button class="view-profile-btn" onclick="openPopup(1)">View Profile</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{% static 'img/FISAL.jpg' %}" alt="Faisal Abbas">
-                    </div>
-                    <div class="team-text">
-                        <h2 style="color: #ffffff;">FAISAL ABBAS</h2>
-                        <p>Chairman</p>
-                        <button class="view-profile-btn" onclick="openPopup(2)">View Profile</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{% static 'img/JOSEPH.png' %}" alt="Dr. Joseph Koskey">
-                    </div>
-                    <div class="team-text">
-                        <h2 style="color: #ffffff;">DR. JOSEPH KOSKEY</h2>
-                        <p>Managing Director/CEO</p>
-                        <button class="view-profile-btn" onclick="openPopup(3)">View Profile</button>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
-<!-- Team Section End -->
 
-<!-- Team Section Start -->
-<div class="team">
+<!-- Team Section End -->
+ <div class="team">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{% static 'img/Ms.-Sharon-Irungu-Asiyo-HSC-240x300.jpg' %}" alt="Ms. Sharon Irungu-Asiyo">
-                    </div>
-                    <div class="team-text">
-                        <h2 style="color: #ffffff;">MS. SHARON IRUNGU-ASIYO</h2>
-                        <p>Alternate To The Attorney-General</p>
-                        <button class="view-profile-btn" onclick="openPopup(4)">View Profile</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{% static 'img/Nyakango.jpg' %}" alt="CPA David Nyakang'o">
-                    </div>
-                    <div class="team-text">
-                        <h2 style="color: #ffffff;">CPA DAVID NYAKANG'O</h2>
-                        <p>Board Member - Financial Management Expert</p>
-                        <button class="view-profile-btn" onclick="openPopup(5)">View Profile</button>
-                    </div>
-                </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <!-- Empty slot for future members -->
             </div>
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{% static 'img/WELLINGTON.jpg' %}" alt="Amb. Wellington Pakia Godo">
-                    </div>
-                    <div class="team-text">
-                        <h2 style="color: #ffffff;">AMB. WELLINGTON PAKIA GODO</h2>
-                        <p>Board Member - Public Administration Expert</p>
-                        <button class="view-profile-btn" onclick="openPopup(6)">View Profile</button>
-                    </div>
-                </div>
+                <!-- Empty slot for future members -->
             </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{% static 'img/kobuthi.jpg' %}" alt="Dr. Edward N. Kobuthi">
-                    </div>
-                    <div class="team-text">
-                        <h2 style="color: #ffffff;">DR. EDWARD N. KOBUTHI</h2>
-                        <p>Board Member - Corporate Governance Expert</p>
-                        <button class="view-profile-btn" onclick="openPopup(7)">View Profile</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Team Section End -->
-
-<!-- Team Section Start -->
-<div class="team">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{% static 'img/Celine.jpg' %}" alt="Celine Anyango Orata">
-                    </div>
-                    <div class="team-text">
-                        <h2 style="color: #ffffff;">CELINE ANYANGO ORATA</h2>
-                        <p>Board Member - Banking & Finance Expert</p>
-                        <button class="view-profile-btn" onclick="openPopup(8)">View Profile</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{% static 'img/Irene.jpg' %}" alt="Irene Njeri Wanyoike">
-                    </div>
-                    <div class="team-text">
-                        <h2 style="color: #ffffff;">IRENE NJERI WANYOIKE</h2>
-                        <p>Commission Member - Legal & Governance Expert</p>
-                        <button class="view-profile-btn" onclick="openPopup(9)">View Profile</button>
-                    </div>
-                </div>
-            </div>
+            
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <!-- Empty slot for future members -->
             </div>
@@ -608,9 +499,7 @@
         </div>
     </div>
 </div>
-<!-- Team Section End -->
 
-<!-- Popup -->
 <div class="popup" id="popup">
     <div class="popup-content">
         <span class="close-btn" onclick="closePopup()">&times;</span>
@@ -705,66 +594,14 @@
         }
     }
 </style>
-
 <script>
-    const members = [
-        {
-            name: "DR. CHRIS K. KIPTOO, CBS",
-            role: "The Principal Secretary, National Treasury",
-            info: "Dr. Chris Kiptoo is the Principal Secretary, National Treasury. He was appointed Principal Secretary by President William Samoei Ruto on 1st December 2022. Dr. Kiptoo is the immediate former Principal Secretary, Ministry of Environment and Forestry. Before that, he also served as a Principal Secretary at the State Department of Trade, Ministry of Industry, Trade & Cooperatives.\n\nIn his working career, Dr. Kiptoo has acquired a wealth of experience in economic policy analysis, mainly gained at the Central Bank of Kenya, Capital Market Authority and the International Monetary Fund, where he has served in various capacities. His expertise especially relates to the design and implementation of monetary policy; balance of payments and exchange rates; fiscal operations and policy; financial sector matters including capital markets; national accounts/real sector and macroeconomic accounting, and modelling and forecasting.\n\nAdditionally, Dr. Kiptoo has proven experience in environment and climate change policies, trade policy and regional integration, private sector development and advocacy, infrastructure development, institutional development of Government institutions and organisational management, all mainly gained at the Ministry of Environment and Forestry, State Department of Trade as well as Trade Mark East Africa. Noteworthy, he also has four years of experience in economic policy coordination gained while working at the then Office of the Prime Minister.\n\nDr. Chris Kiptoo holds a Doctor of Philosophy Degree (PhD) in Finance (International Macroeconomics Finance specialization) from The Nairobi University, as well as a Master of Science (Ag. Economics) and Bachelor of Science (Ag. Economics) degree from Egerton University. He is also an Accredited Fellow in Macroeconomic Management Macroeconomic & Financial Management Institute of Eastern & Southern Africa (MEFMI)."
-        },
-        {
-            name: "HON. DORCAS ODUOR",
-            role: "Attorney General",
-            info: "Hon. Dorcas Oduor serves as the Attorney General of Kenya, the principal legal advisor to the Government. She brings extensive experience in public service and legal practice, having served in various high-level government positions. As Attorney General, she oversees all legal matters concerning the government, provides legal counsel to the President and Cabinet, and represents the government in legal proceedings.\n\nPrior to her appointment as Attorney General, she served as the Solicitor General, where she was responsible for representing the government in constitutional and judicial review matters. She has been instrumental in shaping Kenya's legal framework and has played a key role in major government transactions and legal reforms.\n\nHon. Oduor holds a Bachelor of Laws degree from the University of Nairobi and a Postgraduate Diploma from the Kenya School of Law. She is a member of the Law Society of Kenya and has been recognized for her contributions to legal practice and public service."
-        },
-        {
-            name: "FAISAL ABBAS",
-            role: "Chairman",
-            info: "Faisal is a holder of a degree in Economics from the American University Cairo and a Master of Business Administration degree (Strategic Management) from the University of Nairobi.\n\nFaisal is an entrepreneur with over 20 years of distinguished leadership experience in corporate governance and administration in both the public and private sectors. He is a businessman who perfectly embodies the entrepreneurial spirit having gained incredible success in running a family business with outstanding results over the years.\n\nHe has served in the Public Service as a Director in several State Corporations between 2000 to date. He currently chairs the board of Policy Holders Compensation Fund (PCF) and was previously the Chairman of Geothermal Development Company, (GDC) and REREC. He has also served as a Director of Kenya Electricity Generating Company (KenGen) and was part of the team that steered the organization to enlist at the Nairobi Stock Exchange.\n\nFaisal promotes and fosters ethical practices and good citizenship and volunteers in activities revolving around Education, Community Development and Economic Empowerment."
-        },
-        {
-            name: "DR. JOSEPH KOSKEY",
-            role: "Managing Director/CEO",
-            info: "Joseph holds a PhD in Business Administration, MBA (Strategic Management) and Bachelor of Commerce (Accounting) degrees from the University of Nairobi. He is a Certified Public Accountant, Certified Investment and Financial Analyst. He is a member of ICPAK, the Institute of Certified Secretaries of Kenya and the Institute of Directors Kenya. He is also a certified trainer on corporate governance. Joseph has over 26 years business management experience gained in diverse industries, 19 years of which have been in senior leadership and management positions. He has a distinguished leadership career with a proven track-record of achievements (both in the private and public sectors) in revenue growth, productivity improvement, operational excellence and bottom-line turnaround. He is respected for a strong work-ethic and irreproachable integrity. Prior to his appointment, Joseph had served as the Group CEO at Sovereign Group Ltd, Managing Director at the Kenya Bureau of Standards and as Managing Director at Urgent Cargo Handling Ltd among others. He has also served as the Regional Change Manager for P&O Nedlloyd East Africa and Indian Ocean Islands covering Kenya, Uganda, Tanzania, Mauritius, Madagascar & Seychelles. This background equipped him with invaluable skills and expertise in strategic and financial management, business restructuring and change management."
-        },
-        {
-            name: "MS. SHARON IRUNGU-ASIYO, HSC",
-            role: "Alternate To The Attorney-General",
-            info: "Sharon is an Advocate of the High Court of Kenya, serving as an alternate to the Attorney-General. She holds a Bachelor of Laws (LL.B) Degree from Kampala International University – Uganda, complemented by a Post-Graduate Diploma in Legal Studies from the Kenya School of Law. Currently, Sharon holds the position of State Counsel at the Office of the Attorney-General and Department of Justice, specializing in the Government Transactions Division. Her role involves navigating legal intricacies within governmental transactions. As an active member of the legal community, Sharon is affiliated with the Law Society of Kenya (LSK), demonstrating her commitment to professional excellence and ethical practice within the legal sphere."
-        },
-        {
-            name: "CPA DAVID J. O. NYAKANG'O",
-            role: "Board Member - Financial Management Expert",
-            info: "Mr. Nyakang'o holds a Master of Business Administration from the University of Cumbria in the United Kingdom. He is a Bachelor of Commerce (Accounting Option) graduate from the University of Nairobi. Mr. Nyakang'o is a qualified Certified Public Accountant and a member of the Institute of Certified Public Accountants of Kenya. He is also a Certified Secretary and a member of the Institute of Certified Secretaries of Kenya. He is a Corporate Governance Auditor accredited by the Institute of Certified Secretaries of Kenya.\n\nMr. Nyakang'o is an established leader in business with over 40 years' experience in financial management, audit, tax, company secretarial and corporate governance advisory services. His experience includes high-level finance management as the Financial Controller of Mumias Sugar Company and as Financial Accountant with Eastern Produce Africa Limited.\n\nMr. Nyakang'o has over 30 years' professional practice experience in accountancy, audit, and tax advisory with MDN Kenya LLP since 1992 as Managing Partner. He brings extensive expertise in corporate finance, risk management, and regulatory compliance to the Privatization Commission."
-        },
-        {
-            name: "AMB. WELLINGTON PAKIA GODO",
-            role: "Board Member - Public Administration Expert",
-            info: "Amb. Godo holds an MSc (Finance) degree from the University of Birmingham (UK) and a Bachelor of Arts degree from the University of Nairobi. He is a career civil servant who rose through the ranks in the civil service, having started off as District Officer.\n\nHe has served as the Permanent Secretary in the Office of the Vice President and in the ministries of Regional Development, Health, Tourism and Wildlife; and Gender, Sports, Culture and Social Services. Amb. Godo has served as an Ambassador/Permanent Representative to UNEP, Chairman of the National Water Conservation and Pipeline Corporation, member of Kenyatta University Council and member of the Universal Service Advisory Council.\n\nWith his extensive experience in public administration and international relations, Amb. Godo brings valuable insights into governance and policy implementation to the Privatization Commission."
-        },
-        {
-            name: "DR. EDWARD N. KOBUTHI",
-            role: "Board Member - Corporate Governance Expert",
-            info: "Dr. Edward Kobuthi has a Food Process Engineering background and is a Brewmaster from VLB, Faculty of Brewing and Distillation of the Technical University Berlin, Germany. He holds a PhD in Corporate Governance, an MBA in Strategic Management, a B.Sc in Marketing and Finance and the Diploma Master Brewer from the Institute of Brewing, London.\n\nHe has served as CEO at AMREF's Lomidat Meat Processors, General Manager at Kenya Airways, and General Manager at Kenya Airports Authority. He served as Project Manager, Supply Chain Manager, Bottling Manager and Distribution Manager at East African Breweries Limited. He sits on the Water Services Regulatory Board in addition to the boards of several schools.\n\nDr. Kobuthi brings to the Commission extensive experience in corporate leadership, supply chain management, and operational excellence across both public and private sector organizations."
-        },
-        {
-            name: "CELINE ANYANGO ORATA",
-            role: "Board Member - Banking & Finance Expert",
-            info: "Celine has a Bachelor of Arts degree in Business Administration from the University of Zambia and is an accomplished banker, company director, board member and professional mediator, experienced in building company infrastructure from the ground-up, spearheading strategy planning and development, operational and business excellence, and compliance with various trainings in Banking, Finance, Credit and Risk Management.\n\nShe has wide banking experience spanning over 27 years both locally and internationally and over 6 years in board membership in Kenya Women Finance Trust; currently Kenya Women Microfinance Bank; as well as a Treasurer and Board Member of the Kenya Girl Guides Association for a period of 6 years. She is the current chairperson of the Barclays Bank Pensions SACCO and a Director at Suave Investments Limited.\n\nShe has also been involved in community engagements which involves coaching, mentoring, advocacy, health promotions; and women and youth empowerment. Her diverse experience brings valuable financial and governance expertise to the Privatization Commission."
-        },
-        {
-            name: "IRENE NJERI WANYOIKE",
-            role: "Commission Member - Legal & Governance Expert",
-            info: "Irene is a seasoned and passionate professional with a career spanning over 15 years in alternative dispute resolution mechanisms with an emphasis on Mediation, Law and Governance. She has a Master's degree in Diplomacy and Foreign Policy from Moi University, a Post Graduate diploma in Law from the Kenya School of Law and a Bachelors of Law from the University of Nairobi.\n\nIn her vast experience working with the Judiciary, National Cohesion and Integration Commission and the Association of Professional Societies in East Africa, Irene has interacted extensively with the three Arms of Government, Security, Provincial Administration, county governments and the local grassroots leadership, which has enlarged her networks and given her a rich understanding of the public sector.\n\nIrene is also knowledgeable in the field of Public Sector Reforms, Governance, Human Rights, and is very passionate about issues of Women and Youth Empowerment. Her expertise in mediation and governance contributes significantly to the Commission's mandate."
-        }
-    ];
+    const members = {{ members_json }};
 
-    function openPopup(index) {
+    function openMemberPopup(index) {
         const member = members[index];
         document.getElementById('popup-name').innerText = member.name;
         document.getElementById('popup-role').innerText = member.role;
-        document.getElementById('popup-info').innerText = member.info;
+        document.getElementById('popup-info').innerHTML = member.description.replace(/\n/g, "<br>");
         document.getElementById('popup').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
@@ -774,13 +611,12 @@
         document.body.style.overflow = 'auto';
     }
 
-    document.getElementById('popup').addEventListener('click', function(e) {
+    document.getElementById('popup').addEventListener('click', function (e) {
         if (e.target === this) {
             closePopup();
         }
     });
 </script>
-
 <!-- Footer Start -->
 <!-- Footer Start -->
 <div class="footer wow fadeIn" data-wow-delay="0.3s">

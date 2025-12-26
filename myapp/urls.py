@@ -16,6 +16,7 @@ urlpatterns = [
     path('images/', views.images_view, name='images'),
     path('', views.index_view, name='index'),  # Assuming index.html is the homepage
      path('index', views.index_view, name='index'),
+      path('index/', views.index_view, name='index'),
     path('login/', views.login_view, name='login'),
     path('management/', views.management_view, name='management'),
     path('mandate/', views.mandate_view, name='mandate'),

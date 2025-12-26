@@ -265,6 +265,11 @@
         <span class="dropdown-icon">+</span>
     </div>
     <div class="dropdown-content">
+        
+    {% for doc in access_docs %}
+        <a class="dropdown-item" href="{{ doc.document_link }}" target="_blank">{{ doc.title }}</a>
+    {% endfor %}
+
         <a href="https://ss.privatisation.go.ke/site/login" target="_blank">Staff Self-Service</a>
         <a href="https://bt1.pc.go.ke/wp-content/uploads/2023/11/Access-to-Information-ActNo31of2016.pdf" target="_blank">Access to Information Act No31 of 2016</a>
         <a href="https://bt1.pc.go.ke/wp-content/uploads/2023/11/Access-to-Information-Officers-1.pdf" target="_blank">Access to Information Officers</a>
@@ -283,6 +288,11 @@
         <span class="dropdown-icon">+</span>
     </div>
     <div class="dropdown-content">
+      
+    {% for doc in policies %}
+        <a class="dropdown-item" href="{{ doc.document_link }}" target="_blank">{{ doc.title }}</a>
+    {% endfor %}
+
         <a class="dropdown-item" href="https://bt1.pc.go.ke/wp-content/uploads/2023/11/Leadership-and-Integrity-Code.pdf" target="_blank">Leadership and Integrity Code</a>
         <a class="dropdown-item" href="Protection of Whistle-Blowers Policy" target="_blank">Protection of Whistle-Blowers Policy</a>
         <a class="dropdown-item" href="https://bt1.pc.go.ke/wp-content/uploads/2023/11/Conflict-of-Interest-Policy.pdf" target="_blank">Conflict of Interest Policy</a>
@@ -298,6 +308,15 @@
         <span class="dropdown-icon">+</span>
     </div>
     <div class="dropdown-content">
+        
+    {% for doc in reports %}
+        <a  class="dropdown-item" href="{{ doc.document_link }}" target="_blank">{{ doc.title }}</a>
+    {% endfor %}
+
+    
+                <a href="https://docs.google.com/document/d/1Qr86k8mmR-yepOTW1UIAO-25kmALShYK/edit?usp=sharing&ouid=106924956695957088139&rtpof=true&sd=true" target="_blank">CONTRACT STATUS REPORT Q3 2024-2025</a>
+                <a href="https://docs.google.com/document/d/1HIQESD7Y_rIIXDZqrkeqS8iJxYXss1Le/edit?usp=sharing&ouid=106924956695957088139&rtpof=true&sd=true" target="_blank"> Q3 FY 2024-2025 PROCUREMENT PLAN IMPLEMENTATION</a>
+                                <a href="https://docs.google.com/document/d/1jbs9PN9U0g8P8_H--vTGCJwd0cgIEMms/edit?usp=sharing&ouid=106924956695957088139&rtpof=true&sd=true" target="_blank">SECOND QUARTER (Q2) FY 2024/2025 REPORT ON IMPLEMENTATION OF THE PROCUREMENT PLAN</a>
         <a href="https://docs.google.com/document/d/1Qr86k8mmR-yepOTW1UIAO-25kmALShYK/edit?usp=sharing&ouid=106924956695957088139&rtpof=true&sd=true" target="_blank">CONTRACT STATUS REPORT Q3 2024-2025</a>
 <a href="https://docs.google.com/document/d/1HIQESD7Y_rIIXDZqrkeqS8iJxYXss1Le/edit?usp=sharing&ouid=106924956695957088139&rtpof=true&sd=true" target="_blank">Q3 FY 2024-2025 PROCUREMENT PLAN IMPLEMENTATION</a>
         <a href="https://privatisation.go.ke/wp-content/uploads/2023/11/FINAL-LIST-OF-REGISTERED-SUPPLIERS-FOR-THE-FINANCIAL-YEARS-2023-2024-AND-2024-2025.pdf" target="_blank">FINAL LIST OF REGISTERED SUPPLIERS FOR THE FINANCIAL YEARS 2023-2024 AND 2024-2025</a>

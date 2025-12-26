@@ -6,10 +6,13 @@ from .models import Video,Gallery,RecentActivities,News
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 from django.conf import settings
-from .models import PrivitasationUsers,Gallery,Video,AvailableOpening
+from .models import BoardMember,Management
+from .models import Faq,Eoi,Tender,PrivitasationUsers,Gallery,Video,AvailableOpening,AccessToInformation, Policy, ProcurementReport,MDNote, ChairmanNote, PressRelease, WebStory, PSSpeech,SuccessStory
+from django.core.serializers.json import DjangoJSONEncoder
+from django.utils.safestring import mark_safe
+import json
 
 
-# /home/willy/backend/django gava/views.py
 
 from django.shortcuts import render
 
@@ -17,13 +20,23 @@ def act_view(request):
     return render(request, 'act.html')
 
 def access_view(request):
-    return render (request,'access.html')
+    access_docs = AccessToInformation.objects.all()
+    policies = Policy.objects.all()
+    reports = ProcurementReport.objects.all()
+    return render(request, 'access.html', {
+        'access_docs': access_docs,
+        'policies': policies,
+        'reports': reports
+    })
 
 def benefits_view(request):
     return render(request, 'benefits.html')
 
 def board_view(request):
-    return render(request, 'board.html')
+    members = BoardMember.objects.all()
+    members_info = BoardMember.objects.all().values("name", "role", "description")
+    members_json = mark_safe(json.dumps(list(members_info), cls=DjangoJSONEncoder))
+    return render(request, 'board.html',{'members': members,"members_json": members_json})
 
 def business_view(request):
     return render(request, 'business.html')
@@ -44,22 +57,29 @@ def entreprise_view(request):
     return render(request, 'entreprise.html')
 
 def expressions_view(request):
-    return render(request, 'expressions.html')
+    tenders = Eoi.objects.all().order_by('-id')
+    return render(request, 'expressions.html',{"tenders":tenders})
 
 def images_view(request):
     images=Gallery.objects.all()
     return render(request, 'images.html',{'images':images})
 
 def index_view(request):
-    news = News.objects.all().order_by('-date_today')[:3]
-    activity = RecentActivities.objects.all().order_by('-date_today')
-    return render(request, 'index.html',{'news': news,'activity': activity})
+    activities = News.objects.order_by('-date_today') [:3]
+    faqs = Faq.objects.all()
+    dynamic_accordion1 = faqs[::2]  # Even index FAQs
+    dynamic_accordion2 = faqs[1::2]  # Odd index FAQs
+    return render(request, 'index.html', {'activities': activities,'dynamic_accordion1':dynamic_accordion1,'dynamic_accordion2':dynamic_accordion2})
+    
 
 def login_view(request):
     return render(request, 'login.html')
 
 def management_view(request):
-    return render(request, 'management.html')
+    members = Management.objects.all()
+    members_info = Management.objects.all().values("name", "role", "description")
+    members_json = mark_safe(json.dumps(list(members_info), cls=DjangoJSONEncoder))
+    return render(request, 'management.html',{'members': members,"members_json": members_json})
 
 def mandate_view(request):
     return render(request, 'mandate.html')
@@ -109,10 +129,12 @@ def status_view(request):
     return render(request, 'status.html')
 
 def success_view(request):
-    return render(request, 'success.html')
+    stories = SuccessStory.objects.all()
+    return render(request, 'success.html',{'stories': stories})
 
 def tenders_view(request):
-    return render(request, 'tenders.html')
+    tenders = Tender.objects.all().order_by('-id')
+    return render(request, 'tenders.html',{'tenders': tenders})
 
 def text_view(request):
     return render(request, 'text.html')
@@ -240,4 +262,11 @@ def logout(request):
         return redirect("/index")
 
 def downloads(request):
-    return render (request,"downloads.html")
+    context = {
+        'md_notes': MDNote.objects.all(),
+        'chairman_notes': ChairmanNote.objects.all(),
+        'press_releases': PressRelease.objects.all(),
+        'web_stories': WebStory.objects.all(),
+        'ps_speeches': PSSpeech.objects.all(),
+    }
+    return render (request,"downloads.html",context)

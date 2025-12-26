@@ -726,7 +726,7 @@
                {% for opening in openings %}
             <tr>
                 <td data-label="Job Posting Title">{{ opening.title }}</td>
-                <td data-label="Location">Privatisation Authority</td> <!-- Adjust based on your model's fields -->
+                <td data-label="Location">Privatisation Commission</td> <!-- Adjust based on your model's fields -->
                 <td data-label="Department">{{ opening.department }}</td>
                 <td data-label="Date">{{ opening.date_today|date:"F j, Y" }}</td>
                 <td data-label="Link to View">
@@ -736,57 +736,21 @@
         {% endfor %}
            
 
-            <!-- New Job Postings -->
-            <tr>
-                <td data-label="Job Posting Title">Manager, Information and Communication Technology</td>
-                <td data-label="Location">Privatisation Commission</td>
-                <td data-label="Department">ICT</td>
-                <td data-label="Date">26th November 2024</td>
-            </tr>
-            <tr>
-                <td colspan="4" style="text-align: left;">
-                    <a href="https://drive.google.com/file/d/1KTNhuiVzcdxEzsGxz1ijlMRrKS7K5FZl/view" target="_blank">Click to View Details</a>
-                </td>
-            </tr>
-            <tr>
-                <td data-label="Job Posting Title">Principal Information and Communication Technology Officer</td>
-                <td data-label="Location">Privatisation Commission</td>
-                <td data-label="Department">ICT</td>
-                <td data-label="Date">26th November 2024</td>
-            </tr>
-            <tr>
-                <td colspan="4" style="text-align: left;">
-                    <a href="https://drive.google.com/file/d/1KTNhuiVzcdxEzsGxz1ijlMRrKS7K5FZl/view" target="_blank">Click to View Details</a>
-                </td>
-            </tr>
-            <tr>
-                <td data-label="Job Posting Title">Senior Information and Communication Technology Officer</td>
-                <td data-label="Location">Privatisation Commission</td>
-                <td data-label="Department">ICT</td>
-                <td data-label="Date">26th November 2024</td>
-            </tr>
-            <tr>
-                <td colspan="4" style="text-align: left;">
-                    <a href="https://drive.google.com/file/d/1KTNhuiVzcdxEzsGxz1ijlMRrKS7K5FZl/view" target="_blank">Click to View Details</a>
-                </td>
-            </tr>
-            <tr>
-                <td data-label="Job Posting Title">Senior Records Management Officer</td>
-                <td data-label="Location">Privatisation Commission</td>
-                <td data-label="Department">HR & Administration</td>
-                <td data-label="Date">26th November 2024</td>
-            </tr>
-            <tr>
-                <td colspan="4" style="text-align: left;">
-                    <a href="https://drive.google.com/file/d/1KTNhuiVzcdxEzsGxz1ijlMRrKS7K5FZl/view" target="_blank">Click to View Details</a>
-                </td>
-            </tr>
+            
         </tbody>
     </table>
 
+{% if not openings  %}
+      <p style="text-align: center; font-weight: bold;">
+        No vacancies at the moment
+    </p>
+{% else %}
+    
     <p style="text-align: center; font-weight: bold;">
         Applications should be received not later than 5.00 p.m. on 16th December, 2024.
     </p>
+    {% endif %}
+
 </div>
 
 

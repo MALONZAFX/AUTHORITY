@@ -464,6 +464,18 @@
             </tr>
         </thead>
         <tbody>
+            {% for tender in tenders %}
+        <tr>
+            <td class="kitu">{{ tender.title }}</td>
+            <td>{{ tender.description }}</td>
+            <td>{{ tender.closing_date|default:"—" }}</td>
+            <td>
+                <button class="download-button">
+                    <a href="{{ tender.document_link }}" target="_blank" class="download-btn">Download</a>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
             <tr>
                 <td class="kitu">RE-ADVERTISEMENT <br> EXPRESSION OF INTEREST – KHEAL AND KWAL</td>
                 <td>INVITATION FOR EXPRESSION OF INTEREST: ACQUISITION OF GOVERNMENT SHAREHOLDING IN KHEAL AND KWAL</td>

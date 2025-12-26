@@ -897,6 +897,21 @@
                             </div>
                         </div>
                     </div>
+                    {% for faq in dynamic_accordion1 %}
+<div class="card wow fadeInLeft">
+    <div class="card-header">
+        <a class="card-link collapsed" data-toggle="collapse" href="#dynamicCollapse{{ forloop.counter0 }}-1">
+            {{ faq.question }}
+        </a>
+    </div>
+    <div id="dynamicCollapse{{ forloop.counter0 }}-1" class="collapse" data-parent="#accordion-1">
+        <div class="card-body" style="color: #000000;">
+            {{ faq.answer }}
+        </div>
+    </div>
+</div>
+{% endfor %}
+
                     
                 </div>
             </div>
@@ -953,182 +968,62 @@
                             </div>
                         </div>
                     </div>
+                    {% for faq in dynamic_accordion2 %}
+<div class="card wow fadeInRight">
+    <div class="card-header">
+        <a class="card-link collapsed" data-toggle="collapse" href="#dynamicCollapse{{ forloop.counter0 }}-2">
+            {{ faq.question }}
+        </a>
+    </div>
+    <div id="dynamicCollapse{{ forloop.counter0 }}-2" class="collapse" data-parent="#accordion-2">
+        <div class="card-body" style="color: #000000;">
+            {{ faq.answer }}
+        </div>
+    </div>
+</div>
+{% endfor %}
+
                 </div>
             </div>
         </div>
     </div>
 </div> <!-- FAQs End -->
 
-
-<!-- Recent Activities Start -->
 <div class="blog" id="project">
-    <div class="container">
-        <div class="section-header text-center">
-            <p style="color: #24702A;">Recent Activities</p>
-            <h2>Latest from Privatization Commission</h2>
-        </div>
-        <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center;">
-            {% for activity in activity %}
-            <div style="flex: 0 0 33.333%; padding: 10px; box-sizing: border-box;">
-                <div style="border: 1px solid #ddd; border-radius: 5px; padding: 15px; background-color: #fff; text-align: center;">
-                    <img src="{% if activity.image %}{{ activity.image.url }}{% else %}{% static 'img/default-news-image.png' %}{% endif %}" alt="{{ activity.title }}" style="width: 100%; height: auto; border-radius: 5px;">
-                    
-                    <div class="blog-text" style="margin-bottom: 10px;">
-                        {{ activity.text }} <!-- Limit text length -->
-                        <span class="more-text" style="display: none;">{{ activity.text|slice:"100:" }}</span> <!-- Hidden text -->
-                    </div>
-        
-                    <div class="blog-title" style="height: fit-content;">
-                        <h3><a href="#" style="font-weight: bold; color: #ffffff; text-decoration: none;">
-                            <span class="title-text" > {{ activity.title }}</span>
-                        </a></h3>
-                        <a class="btn toggle-title" href="javascript:void(0)">+</a>
-                    </div>
-        
-                    {% if activity.link_url %}
-                    <a href="{{ activity.link_url }}" class="" target="_blank" style="color: #24702A; text-decoration:underline;">Click To View</a>
-                    {% endif %}
-                </div>
-            </div>
-        
-            <!-- Adjust layout based on item count -->
-            {% if forloop.counter|divisibleby:3 %}
-                </div><div class="row" style="display: flex; flex-wrap: wrap; justify-content: center;">
-            {% elif forloop.counter|divisibleby:2 and not forloop.counter|divisibleby:3 %}
-                <style> .row { justify-content: space-between; } </style>
-            {% endif %}
-            {% endfor %}
-        </div>
-        
-        
-        <div class="row">
-            <!-- First Row of 3 Activities -->
-            <!-- New Card: Dummy Content -->
-            
-            <!-- Existing Cards -->
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="{% static 'img/Coat2.jpg' %}" alt="Coat of Arms">
-                    </div>
-                    <div class="blog-title">
-                        <h3>
-                            Declaration of Vacancies for Members of the Board <span class="more-text" style="display: none;"> of the Privatization Commission</span>
-                        </h3>
-                        <a class="btn toggle-title" href="javascript:void(0)">+</a>
-                    </div>
-                    <div class="blog-text">
-                        <p>
-                            The National Treasury & Economic Planning is in the process of recruiting members of the Board of the Privatization Commission. Pursuant to Section 10(1)(f) of the Privatization Act, 2023, the Cabinet Secretary for the National Treasury & Economic Planning invites applications from suitably qualified persons for the positions of members of the Board of Privatization Commission.
-                        </p>
-                        <a href="https://drive.google.com/file/d/1GWVYz1fkqubXLkrcm721ItMmStXl7aPV/view?usp=sharing" class="" target="_blank" style="color: #24702A;text-decoration:underline;">Click to view</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="{% static 'img/kwal.jpeg' %}" alt="Acquisition of Government Shareholding in KHAEL and KWAL">
-                    </div>
-                    <div class="blog-title">
-                        <h3>
-                            Acquisition of Government Shareholding <span class="more-text" style="display: none;">in KHAEL and KWAL</span>
-                        </h3>
-                        <a class="btn toggle-title" href="javascript:void(0)">+</a>
-                    </div>
-                    <div class="blog-text">
-                        <p>
-                            The Government of Kenya (GOK), through the Privatization Commission, has invited prospective investors to submit bids for the acquisition of GOK shareholdings of KWAL Holdings (E.A) Limited (KHEAL) and Kenya Wine Agency Limited (KWAL) by 26th August 2024. GOK shareholdings of KHEAL and KWAL comprise 43.77% and 0.0000125% respectively.
-                        </p>
-                        <a href="https://drive.google.com/file/d/1BBUxXHpltCLfKYgToqBne8V3xyFm4zHI/view?usp=drive_link" style="text-decoration: underline;color: green;">click to view</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="{% static 'img/Optimized-20230630_101319-360x230.jpg' %}" alt="Privatisation Authority Donates 17,800 Tree Seedlings">
-                    </div>
-                    <div class="blog-title">
-                        <h3>
-                            Privatization Commission Donates <span class="more-text" style="display: none;">17,800 Tree Seedlings</span>
-                        </h3>
-                        <a class="btn toggle-title" href="javascript:void(0)">+</a>
-                    </div>
-                    <div class="blog-text">
-                        <p>
-                            The Privatization Commission donated 17,800 tree seedlings during the 7th Edition of the Kaptagat Annual tree planting event at Kessup Forest in Elgeyo Marakwet. Sourced from Kericho Medium Prison and Ngeria Prison in Eldoret, these seedlings were part of the Authority's CSR efforts. Represented by Board Chairman Mr. Faisal Abbas and Executive Director Mr. Joseph Koskey, the Authority helped plant 32,000 trees, supporting the Presidential directive to plant 15 billion trees by 2032.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-
-        
-        
-        <!-- Second Row of 3 Activities -->
-        <div class="row">
-
-            <!-- Existing Cards in Second Row -->
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="{% static 'img/Optimized-20230630_101319-360x230.jpg' %}" alt="Privatisation Authority Donates 17,800 Tree Seedlings">
-                    </div>
-                    <div class="blog-title">
-                        <h3>
-                            Privatization Commission Donates <span class="more-text" style="display: none;">17,800 Tree Seedlings</span>
-                        </h3>
-                        <a class="btn toggle-title" href="javascript:void(0)">+</a>
-                    </div>
-                    <div class="blog-text">
-                        <p>
-                            The Privatization Commission donated 17,800 tree seedlings during the 7th Edition of the Kaptagat Annual tree planting event at Kessup Forest in Elgeyo Marakwet. Sourced from Kericho Medium Prison and Ngeria Prison in Eldoret, these seedlings were part of the Authority's CSR efforts. Represented by Board Chairman Mr. Faisal Abbas and Executive Director Mr. Joseph Koskey, the Authority helped plant 32,000 trees, supporting the Presidential directive to plant 15 billion trees by 2032.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="{% static 'img/KHPL-EOI-Photo-360x230.png' %}" alt="Acquisition of Government Shareholding in Kenya Hotel Properties Limited">
-                    </div>
-                    <div class="blog-title">
-                        <h3>
-                            Acquisition of Government Shareholding <span class="more-text" style="display: none;">in Kenya Hotel Properties Limited</span>
-                        </h3>
-                        <a class="btn toggle-title" href="javascript:void(0)">+</a>
-                    </div>
-                    <div class="blog-text">
-                        <p>
-                            The Government of Kenya, through the Privatization Commission, invites investors to acquire 33.83% of its shareholding in Kenya Hotel Properties Limited (KHPL) by 18th April 2024. Established in 1966, KHPL owns a prime property in Nairobi's Central Business District, previously managed by the Intercontinental Hotel Group, near the National Parliament building.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="{% static 'img/donation.jpeg' %} "alt="Acquisition of Government Shareholding in Kenya Hotel Properties Limited">
-                    </div>
-                    <div class="blog-title">
-                        <h3>
-                            SANITARY TOWELS DISTRIBUTION<span class="more-text" style="display: none;">TO IMANI REHABILITATION AGENCY</span>
-                        </h3>
-                        <a class="btn toggle-title" href="javascript:void(0)">+</a>
-                    </div>
-                    <div class="blog-text">
-                        <p>
-                            Privatisation Authority has donated over 900 packets of sanitary towels to Imani Rehabilitation Agency in Soweto Kayole. This CSR initiative aims to provide medical health support to vulnerable groups. Project Manager Gillian Njeru highlighted the critical challenge of accessing sanitary pads for many girls in the agency, causing discomfort and embarrassment. Additionally, the Authority's officers donated food, clothes, and toys as personal contributions.
-
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="section-header text-center">
+      <p style="color: #24702A;">Recent Activities</p>
+      <h2>Latest from Privatization Commission</h2>
     </div>
+
+    <div class="row">
+      {% for activity in activities %}
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+        <div class="blog-item">
+          <div class="blog-img">
+            <img src="{% if activity.image %}{{ activity.image.url }}{% else %}{% static 'img/default-news-image.png' %}{% endif %}" alt="{{ activity.title }}" style="width: 100%; height: auto; border-radius: 5px;">
+          </div>
+          <div class="blog-title">
+            <h3 style="color: white;">
+              {{ activity.title }}
+            </h3>
+          </div>
+          <div class="blog-text">
+            <p>
+              {{ activity.text|truncatechars:500 }}
+            </p>
+            {% if activity.link_url %}
+            <a href="{{ activity.link_url }}" target="_blank" style="color: #24702A; text-decoration: underline;">Click to View</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>
+
+
 <!-- Recent Activities Start -->
 <div class="blog" id="project">
     <div class="container">
@@ -1136,44 +1031,12 @@
             <a href="/news" style="display: inline-block;font-size: large;color: black;">Click to view all news</a>
            
         </div>
-        <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center;">
-            {% for activity in news %}
-            <div style="flex: 0 0 33.333%; padding: 10px; box-sizing: border-box;">
-                <div style="border: 1px solid #ddd; border-radius: 5px; padding: 15px; background-color: #fff; text-align: center;">
-                    <img src="{% if activity.image %}{{ activity.image.url }}{% else %}{% static 'img/default-news-image.png' %}{% endif %}" alt="{{ activity.title }}" style="width: 100%; height: auto; border-radius: 5px;">
-                    
-                    <div class="blog-text" style="margin-bottom: 10px;">
-                        {{ activity.text }} <!-- Limit text length -->
-                        <span class="more-text" style="display: none;">{{ activity.text|slice:"100:" }}</span> <!-- Hidden text -->
-                    </div>
         
-                    <div class="blog-title" style="height: fit-content;">
-                        <h3><a href="#" style="font-weight: bold; color: #ffffff; text-decoration: none;">
-                            <span class="title-text" > {{ activity.title }}</span>
-                        </a></h3>
-                        <a class="btn toggle-title" href="javascript:void(0)">+</a>
-                    </div>
-        
-                   
-                </div>
-            </div>
-        
-            <!-- Adjust layout based on item count -->
-            {% if forloop.counter|divisibleby:3 %}
-                </div><div class="row" style="display: flex; flex-wrap: wrap; justify-content: center;">
-            {% elif forloop.counter|divisibleby:2 and not forloop.counter|divisibleby:3 %}
-                <style> .row { justify-content: space-between; } </style>
-            {% endif %}
-            {% endfor %}
-        </div>
 
             
           
         </div>
-        <div style="text-align: center;">
-          
-        </div>
-        
+       
         <!-- Second Row of 3 Activities -->
         
             

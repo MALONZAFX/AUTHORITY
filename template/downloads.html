@@ -578,7 +578,13 @@
                         <span class="icon expand"></span>
                     </div>
                     <div class="section-content">
-                        <a href="https://drive.google.com/file/d/1DEudaiU7JX5i-RRjdXHIragCqfhFdDle/view?usp=sharing">Click To View Notes</a>
+      <ul>
+    {% for note in md_notes %}
+        <li><a href="{{ note.document_link }}" target="_blank">{{ note.title }}</a></li>
+    {% empty %}
+        <li>No MD notes available.</li>
+    {% endfor %}
+</ul>
                     </div>
                 </div>
                 <div class="section">
@@ -587,7 +593,13 @@
                         <span class="icon expand"></span>
                     </div>
                     <div class="section-content">
-                        <a href="https://drive.google.com/file/d/1qZpVTphzhgoQVAsk6idrrA99mLaVO20I/view?usp=sharing">Click To View Notes</a>
+                      <ul>
+    {% for note in chairman_notes %}
+        <li><a href="{{ note.document_link }}" target="_blank">{{ note.title }}</a></li>
+    {% empty %}
+        <li>No Chairman's notes available.</li>
+    {% endfor %}
+</ul>
                     </div>
                 </div>
                 <div class="section">
@@ -596,7 +608,13 @@
                         <span class="icon expand"></span>
                     </div>
                     <div class="section-content">
-                        <a href="https://drive.google.com/file/d/1VVeLJrTAJ35tCPSKtmSSwyHTkpS8CVvZ/view?usp=sharing">Click To View Notes</a>
+                      <ul>
+    {% for pr in press_releases %}
+        <li><a href="{{ pr.document_link }}" target="_blank">{{ pr.title }}</a></li>
+    {% empty %}
+        <li>No Press Releases available.</li>
+    {% endfor %}
+</ul>
                     </div>
                 </div>
                 <div class="section">
@@ -605,8 +623,13 @@
                         <span class="icon expand"></span>
                     </div>
                     <div class="section-content">
-                        <a href="https://drive.google.com/file/d/11CdtVR4YCxTyp_HS9PyXIm2KRkIC72eA/view?usp=sharing">Click To View Notes</a>
-                    </div>
+                        <ul>
+    {% for story in web_stories %}
+        <li><a href="{{ story.document_link }}" target="_blank">{{ story.title }}</a></li>
+    {% empty %}
+        <li>No Web Stories available.</li>
+    {% endfor %}
+</ul>
                 </div>
                 
             </div>
@@ -616,7 +639,13 @@
                     <span class="icon expand"></span>
                 </div>
                 <div class="section-content">
-                    <a href="https://drive.google.com/file/d/1HJDvialiYEZlgSf14cH78-QDzuM_zloT/view?usp=sharing">Click To View Notes</a>
+                   <ul>
+    {% for speech in ps_speeches %}
+        <li><a href="{{ speech.document_link }}" target="_blank">{{ speech.title }}</a></li>
+    {% empty %}
+        <li>No PS speeches available.</li>
+    {% endfor %}
+</ul>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@ import psycopg2
 from psycopg2 import sql
 
 # Replace with your actual database URL
-DATABASE_URL = "postgresql://postgres:UqUaguBlEWaQahOaEzJnkoSJwdqQhmSs@autorack.proxy.rlwy.net:58829/railway"
+DATABASE_URL = "postgresql://postgres:VvMiAFUPGVUVViDMtQhGwKjptcAGiVwW@autorack.proxy.rlwy.net:56481/railway"
 
 # Connect to PostgreSQL
 conn = psycopg2.connect(DATABASE_URL)

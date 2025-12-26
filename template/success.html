@@ -469,6 +469,15 @@
 </head>
 <body>
     <div class="container">
+    {% for story in stories %}
+    <div class="square">
+        <img src="{{ story.image.url }}" alt="{{ story.title }}">
+        <h4>{{ story.title }}</h4>
+        <p>{{ story.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+    <div class="container">
         <div class="square">
             <img src="{% static 'img/kwal2-1-350x250.jpg' %}" alt="Image 1">
             <h4>KENYA WINE AGENCIES LIMITED (KWAL) STORY</h4>
