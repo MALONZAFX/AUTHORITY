@@ -26,6 +26,7 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 # Host configurations
 ALLOWED_HOSTS = [
     'privatisation-production.up.railway.app',
+     'authority-production.up.railway.app',  
     '127.0.0.1',
     'localhost',
     'www.privatisation.go.ke',
@@ -34,6 +35,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://privatisation-production.up.railway.app',
+     'https://privatisation-production.up.railway.app',
     'https://127.0.0.1',
     'https://localhost',
     'https://privatisation.go.ke',
