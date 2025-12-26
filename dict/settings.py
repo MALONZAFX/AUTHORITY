@@ -156,7 +156,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]  # YOUR STATIC DIRS
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Whitenoise configuration for Railway
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # ==================== MEDIA FILES ====================
 
