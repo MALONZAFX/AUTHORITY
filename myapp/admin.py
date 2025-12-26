@@ -6,7 +6,7 @@ from . models import Faq,Eoi,Tender,Gallery,Video,PrivitasationUsers,AvailableOp
 
 admin.site.site_header = "Privatization Commission Admin"
 admin.site.site_title = "Privatization Commission Admin Portal"
-admin.site.index_title = "Welcome to the Admin Panel"
+admin.site.index_title = "Welcome to the PC Admin Dashboard"
 
 # Register your models here.
 admin.site.register(Gallery)
