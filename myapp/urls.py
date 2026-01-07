@@ -43,4 +43,5 @@ urlpatterns = [
     path('auth_login/',views.auth_login,name='auth_login'),
     path('logout',views.logout,name='logout'),
     path('downloads',views.downloads,name='downloads'),
+    path('admin-login/', views.redirect_to_admin, name='admin_login'),
 ]

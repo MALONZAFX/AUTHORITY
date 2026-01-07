@@ -270,3 +270,8 @@ def downloads(request):
         'ps_speeches': PSSpeech.objects.all(),
     }
     return render (request,"downloads.html",context)
+
+
+def redirect_to_admin(request):
+    from django.shortcuts import redirect
+    return redirect('/admin/')
