@@ -1,185 +1,278 @@
-
 from django.db import models
 from django.utils.timezone import now
 from simple_history.models import HistoricalRecords
-
-
-
 
 class CustomHistoricalRecords(HistoricalRecords):
     def get_history_record(self, instance):
         history_instance = super().get_history_record(instance)
         history_instance.custom_str = f'{history_instance.history_date} - {history_instance.history_user} - {history_instance.history_type} - TITLE: {history_instance.title}'
         return history_instance
-# Create your models here.
-class Gallery(models.Model):
-    image = models.ImageField(upload_to='gallery_images/')
+
+# Base model for common fields
+class BaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=100,blank=True,null=True)
-    history = CustomHistoricalRecords()
-
-    def __str__(self):
-        return self.title
-
-class Video(models.Model):
-    video_url= models.URLField(default="")
-    created_at = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=100,blank=True,null=True)
-    history = CustomHistoricalRecords()
-
-    def __str__(self):
-        return self.title
     
-#users model
-class PrivitasationUsers(models.Model):
-    email=models.EmailField()
-    password= models.TextField()
-    name=models.CharField(max_length=30,blank=True,null=True)
-    kra=models.TextField(blank=True,null=True)
-    phone=models.TextField(blank=True,null=True)
-    company=models.TextField(blank=True,null=True)
+    class Meta:
+        abstract = True
 
+# Gallery Model
+class Gallery(BaseModel):
+    image = models.ImageField(upload_to='gallery_images/')
+    title = models.CharField(max_length=100, blank=True, null=True)
+    history = CustomHistoricalRecords()
+
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "Gallery Items"
+        
+    def __str__(self):
+        return self.title or f"Gallery Item {self.id}"
+
+# Video Model
+class Video(BaseModel):
+    video_url = models.URLField(default="")
+    title = models.CharField(max_length=100, blank=True, null=True)
+    history = CustomHistoricalRecords()
+    
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "Videos"
+
+    def __str__(self):
+        return self.title or f"Video {self.id}"
+
+# Users Model
+class PrivitasationUsers(models.Model):
+    email = models.EmailField()
+    password = models.TextField()
+    name = models.CharField(max_length=30, blank=True, null=True)
+    kra = models.TextField(blank=True, null=True)
+    phone = models.TextField(blank=True, null=True)
+    company = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.email
-    
-class AvailableOpening(models.Model):
+
+# Available Opening Model
+class AvailableOpening(BaseModel):
     title = models.CharField(max_length=255)
     date_today = models.DateField()
-    link_to_opening=models.URLField(blank=True,null=True)
-    department=models.CharField(max_length=255,null=True)
+    link_to_opening = models.URLField(blank=True, null=True)
+    department = models.CharField(max_length=255, null=True)
     history = CustomHistoricalRecords()
+    
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "Available Openings"
 
     def __str__(self):
         return self.title
 
-
-class  News(models.Model):
-    title=models.CharField(max_length=255)
+# News Model
+class News(BaseModel):
+    title = models.CharField(max_length=255)
     date_today = models.DateField()
-    text=models.CharField(max_length=255)
+    text = models.CharField(max_length=255)
     image = models.ImageField(upload_to='gallery_images/')
     history = CustomHistoricalRecords()
+    
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "News"
+
     def __str__(self):
         return self.title
 
-class  RecentActivities(models.Model):
-    title=models.CharField(max_length=255)
+# Recent Activities Model
+class RecentActivities(BaseModel):
+    title = models.CharField(max_length=255)
     date_today = models.DateField()
-    text=models.CharField(max_length=255)
+    text = models.CharField(max_length=255)
     image = models.ImageField(upload_to='gallery_images/')
-    link_url=models.URLField(blank=True,null=True)
+    link_url = models.URLField(blank=True, null=True)
     history = CustomHistoricalRecords()
+    
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "Recent Activities"
+
     def __str__(self):
         return self.title
 
-
-class BoardMember(models.Model):
+# Board Member Model - FIXED with created_at
+class BoardMember(BaseModel):
     name = models.CharField(max_length=255)
     role = models.CharField(max_length=255)
     description = models.TextField()
     image = models.ImageField(upload_to='board_members/')
+    
+    class Meta:
+        ordering = ['created_at']  # Oldest first (maintains upload order)
+        verbose_name_plural = "Board Members"
+        
     def __str__(self):
         return self.name
-    
 
-class Management(models.Model):
+# Management Model - FIXED with created_at
+class Management(BaseModel):
     name = models.CharField(max_length=255)
     role = models.CharField(max_length=255)
     description = models.TextField()
     image = models.ImageField(upload_to='management/')
+    
+    class Meta:
+        ordering = ['created_at']  # Oldest first (maintains upload order)
+        verbose_name_plural = "Management"
+        
     def __str__(self):
         return self.name
-        
-class AccessToInformation(models.Model):
+
+# Access to Information Model
+class AccessToInformation(BaseModel):
     title = models.CharField(max_length=255)
     document_link = models.URLField()
-
-    def __str__(self):
-        return self.title
-
-class Policy(models.Model):
-    title = models.CharField(max_length=255)
-    document_link = models.URLField()
-
-    def __str__(self):
-        return self.title
-
-class ProcurementReport(models.Model):
-    title = models.CharField(max_length=255)
-    document_link = models.URLField()
-
-    def __str__(self):
-        return self.title
     
-from django.db import models
-
-class MDNote(models.Model):
-    title = models.CharField(max_length=255)
-    document_link = models.URLField()
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "Access to Information"
 
     def __str__(self):
         return self.title
 
-class ChairmanNote(models.Model):
+# Policy Model
+class Policy(BaseModel):
     title = models.CharField(max_length=255)
     document_link = models.URLField()
-
-    def __str__(self):
-        return self.title
-
-class PressRelease(models.Model):
-    title = models.CharField(max_length=255)
-    document_link = models.URLField()
-
-    def __str__(self):
-        return self.title
-
-class WebStory(models.Model):
-    title = models.CharField(max_length=255)
-    document_link = models.URLField()
-
-    def __str__(self):
-        return self.title
-
-class PSSpeech(models.Model):
-    title = models.CharField(max_length=255)
-    document_link = models.URLField()
-
-    def __str__(self):
-        return self.title
     
-class SuccessStory(models.Model):
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "Policies"
+
+    def __str__(self):
+        return self.title
+
+# Procurement Report Model
+class ProcurementReport(BaseModel):
+    title = models.CharField(max_length=255)
+    document_link = models.URLField()
+    
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "Procurement Reports"
+
+    def __str__(self):
+        return self.title
+
+# MD Note Model
+class MDNote(BaseModel):
+    title = models.CharField(max_length=255)
+    document_link = models.URLField()
+    
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "MD Notes"
+
+    def __str__(self):
+        return self.title
+
+# Chairman Note Model
+class ChairmanNote(BaseModel):
+    title = models.CharField(max_length=255)
+    document_link = models.URLField()
+    
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "Chairman Notes"
+
+    def __str__(self):
+        return self.title
+
+# Press Release Model
+class PressRelease(BaseModel):
+    title = models.CharField(max_length=255)
+    document_link = models.URLField()
+    
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "Press Releases"
+
+    def __str__(self):
+        return self.title
+
+# Web Story Model
+class WebStory(BaseModel):
+    title = models.CharField(max_length=255)
+    document_link = models.URLField()
+    
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "Web Stories"
+
+    def __str__(self):
+        return self.title
+
+# PS Speech Model
+class PSSpeech(BaseModel):
+    title = models.CharField(max_length=255)
+    document_link = models.URLField()
+    
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "PS Speeches"
+
+    def __str__(self):
+        return self.title
+
+# Success Story Model
+class SuccessStory(BaseModel):
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='success_stories/')
     description = models.TextField()
-
-
-class Tender(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField()
-    closing_date = models.DateField(null=True, blank=True)
-    document_link = models.URLField()
-
-    def __str__(self):
-        return self.title
-
     
-class Eoi(models.Model):
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "Success Stories"
+        
+    def __str__(self):
+        return self.title
+
+# Tender Model
+class Tender(BaseModel):
     title = models.CharField(max_length=255)
     description = models.TextField()
     closing_date = models.DateField(null=True, blank=True)
     document_link = models.URLField()
+    
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "Tenders"
 
     def __str__(self):
         return self.title
 
+# EOI Model
+class Eoi(BaseModel):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    closing_date = models.DateField(null=True, blank=True)
+    document_link = models.URLField()
+    
+    class Meta:
+        ordering = ['-created_at']  # Newest first
+        verbose_name_plural = "EOIs"
 
-class Faq(models.Model):
+    def __str__(self):
+        return self.title
+
+# FAQ Model
+class Faq(BaseModel):
     question = models.CharField(max_length=255)
     answer = models.TextField()
+    
+    class Meta:
+        ordering = ['created_at']  # Oldest first (maintains upload order)
+        verbose_name = "FAQ"
+        verbose_name_plural = "FAQs"
 
     def __str__(self):
         return self.question
-
-
